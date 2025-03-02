@@ -1,0 +1,14 @@
+{% extends "transactions/base.html" %}
+
+{% block content %}
+    <h2>Adicionar Moeda</h2>
+    <h4>OBS: Código da moeda (ex: BRL, USD, EUR)</h4>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="button-container">
+            <button type="submit" class="btn">Salvar</button>
+            <a href="{% url 'currency_list' %}" class="btn">Voltar</a>
+        </div>
+    </form>
+{% endblock %}

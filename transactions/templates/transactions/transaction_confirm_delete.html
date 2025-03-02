@@ -1,0 +1,13 @@
+{% extends "transactions/base.html" %}
+
+{% block content %}
+    <h2>Excluir Transação</h2>
+    <p>Tem certeza que deseja excluir a transação de "{{ transaction.amount }} {{ transaction.currency.code }}"?</p>
+    <p>Descrição: "{{ transaction.description }}"</p>
+    <p>Data: "{{ transaction.date }}"</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a href="{% url 'transaction_list' %}" class="btn">Cancelar</a>
+    </form>
+{% endblock %}

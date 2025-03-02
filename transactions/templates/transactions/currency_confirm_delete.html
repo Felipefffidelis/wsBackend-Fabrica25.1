@@ -1,0 +1,11 @@
+{% extends "transactions/base.html" %}
+
+{% block content %}
+    <h2>Excluir Moeda</h2>
+    <p>Tem certeza que deseja excluir a moeda "{{ currency.code }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a href="{% url 'currency_list' %}" class="btn">Cancelar</a>
+    </form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "transactions/base.html" %}
+
+{% block content %}
+    <h2>Transações Cadastradas</h2>
+    <a href="{% url 'transaction_create' %}" class="btn">Adicionar Transação</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Valor</th>
+                <th>Moeda</th>
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.amount }}</td>
+                    <td>{{ transaction.currency.code }}</td>
+                    <td>{{ transaction.date }}</td>
+                    <td>{{ transaction.description }}</td>
+                    <td>
+                        <a href="{% url 'transaction_update' transaction.id %}" class="btn">Editar</a>
+                        <a href="{% url 'transaction_delete' transaction.id %}" class="btn btn-danger">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
